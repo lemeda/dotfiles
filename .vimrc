@@ -1,0 +1,118 @@
+" {{{ Vundle
+    set nocompatible    " be iMproved, required
+    filetype off        " required
+
+"    let g:HasVundle = !empty(glob(expand("~") . "/.vim/bundle/Vundle.vim/*"))
+"    if g:HasVundle
+        set rtp+=~/.vim/bundle/Vundle.vim
+        call vundle#begin()
+
+"        Plugin 'gmarik/Vundle.vim'              " Manage plugins
+        Plugin 'VundleVim/Vundle.vim'
+        Plugin 'tpope/vim-sensible'             " Add multiple features
+"        Plugin 'danro/rename.vim'               " Enable file renaming
+
+"        Plugin 'SirVer/ultisnips'               " Use snippets
+        Plugin 'scrooloose/syntastic'           " Compile and print errors on :w
+        Plugin 'Valloric/YouCompleteMe'         " Complete C/C++
+        Plugin 'javacomplete'                   " Complete Java
+"        Plugin 'tell-k/vim-autopep8'            " Clean python
+"        Plugin 'tpope/vim-commentary'           " Auto (de)comment
+"        Plugin 'tpope/vim-endwise'              " Auto end
+"        Plugin 'matze/vim-move'                 " Move blocs through code and indentation
+
+"        Plugin 'bling/vim-airline'              " Explicit status bar
+"        Plugin 'airblade/vim-gitgutter'         " Print git diff into vim
+"        Plugin 'Yggdroot/indentLine'            " Explicit indentation
+"        Plugin 'ntpeters/vim-better-whitespace' " Spot and remove bad whitespaces
+"        Plugin 'google/vim-searchindex'         " Print number of results in a search
+
+        " Coloration
+"        Plugin 'ekalinin/Dockerfile.vim'        " Dockerfile
+"        Plugin 'rust-lang/rust.vim'             " Rust
+"        Plugin 'vim-scripts/django.vim'         " Django
+
+        Plugin 'vim-airline/vim-airline'         " Explicit status bar
+        Plugin 'vim-airline/vim-airline-themes'  " Themes for vim-airline
+        Plugin 'Lokaltog/powerline'              " More stylish statusline
+		Plugin 'bling/vim-bufferline'            " Info on buffers in statusline
+
+        Plugin 'tpope/vim-fugitive'
+
+        Plugin 'ntpeters/vim-better-whitespace'
+        call vundle#end()
+"    end
+" }}}
+
+
+filetype plugin indent on
+syntax on
+
+color delek_modified
+
+set encoding=UTF-8
+set nu
+set ai
+set wrap
+
+set autoindent
+set shiftwidth=4 shiftround
+set tabstop=4
+set expandtab
+
+set ruler
+set undolevels=1000
+set backspace=indent,eol,start
+set joinspaces
+set whichwrap+=<,>,h,l,[,]
+set sidescroll=1
+
+set clipboard=unnamedplus
+
+"set grepprg=grep\ -nH\ $*
+"let g:tex_flavor = "latex"
+"set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+
+set spell
+
+set dir=~/.vim
+set undodir=~/.vim
+
+" vim-airline conf
+"" Theme
+let g:airline_theme='bubblegum'
+"" Powerline
+let g:airline_powerline_fonts = 1
+let g:Powerline_symbols='unicode'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+ let g:airline_left_sep = ''
+ let g:airline_left_alt_sep = ''
+ let g:airline_right_sep = ''
+ let g:airline_right_alt_sep = ''
+ let g:airline_symbols.branch = ''
+ let g:airline_symbols.readonly = ''
+ let g:airline_symbols.linenr = ''
+
+" bufferline
+ let g:bufferline_echo = 1
+ let g:bufferline_active_buffer_left = '['
+ let g:bufferline_active_buffer_right = ']'
