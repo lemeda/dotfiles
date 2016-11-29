@@ -1,0 +1,8 @@
+# dotfiles
+Configuration files
+
+##Vim
+    vimrc
+
+##Awesome
+    rc.lua
