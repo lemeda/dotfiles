@@ -73,7 +73,8 @@ set clipboard=unnamedplus
 "let g:tex_flavor = "latex"
 "set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
-set spell
+set nospell
+set spelllang=fr,en
 
 set dir=~/.vim
 set undodir=~/.vim
