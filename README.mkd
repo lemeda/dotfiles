@@ -6,3 +6,6 @@ Configuration files
 
 ##Awesome
     rc.lua
+
+## zsh
+    zshrc
