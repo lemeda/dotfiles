@@ -9,3 +9,6 @@ Configuration files
 
 ## zsh
     zshrc
+
+##Xorg
+    xinitrc
