@@ -94,9 +94,9 @@ local layouts =
 wp_index = 1
 wp_timeout = 900
 wp_path = "/home/lena/lemeda/Pictures/Wallpapers/"
-wp_files = { "01.png", "02.png", "03.png", "04.png", "05.png", "06.png", "07.jpg", "08.jpg", "09.jpg", 
-             "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg", 
-             "20.jpg", "21.jpg", 
+wp_files = { "01.png", "02.png", "03.png", "04.png", "05.png", "06.png", "07.jpg", "08.jpg", "09.jpg",
+             "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg",
+             "20.jpg", "21.jpg",
              "Archlinux.jpg" }
 
 gears.wallpaper.maximized("/home/lena/lemeda/Pictures/Wallpapers/Archlinux.jpg", s, true)
@@ -167,17 +167,17 @@ app_folders = { "/usr/share/applications/", "~/local/share/applications/" }
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
-separator = wibox.widget.textbox('|') 
+separator = wibox.widget.textbox('|')
 
 -- Network widget
 netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, 
+vicious.register(netwidget, vicious.widgets.net,
     '<span color="#CC9393">${eno1 down_kb}</span> <span color="#7F9F7F">${eno1 up_kb}</span>'
     , 3)
 
 -- Battery Widget
 batwidget = wibox.widget.textbox()
-vicious.register(batwidget, vicious.widgets.bat, 
+vicious.register(batwidget, vicious.widgets.bat,
 	function (widget, args)
 	  r = ' BAT: '
 	  if args[3] == 'N/A' then
@@ -204,14 +204,14 @@ vicious.register(batwidget, vicious.widgets.bat,
         notified = 0
 	    r = r .. '<span color="orange">' .. args[2] .. '</span>'
 	  elseif  args[2] < 35 then
-	    r = r .. '<span color="yellow">' .. args[2] .. '</span>'          
+	    r = r .. '<span color="yellow">' .. args[2] .. '</span>'
 	  else
-	    r = r .. '<span color="#00ff00">' .. args[2] .. '</span>'          
+	    r = r .. '<span color="#00ff00">' .. args[2] .. '</span>'
 	  end
-	 
+
 	  r = r .. '% '
 	  if args[3] ~= 'N/A' then
-	    r = r .. '(' .. args[3] .. ') '	              
+	    r = r .. '(' .. args[3] .. ') '
 	  end
 
 	  -- notification if need to load
@@ -237,7 +237,7 @@ vicious.register(volwidget, vicious.widgets.volume,
 	    r =r .. '<span color="#00ff00">' .. args[1] .. '</span>% '
 	  else
 	    r =r .. '<span color = "red">' .. args[1] .. '</span> (M) '
-	  end 
+	  end
 	  return r
 	end, 10, 'Master')
 
@@ -262,7 +262,7 @@ vicious.register(memwidget, vicious.widgets.mem,
 
         return r .. '<span color="' .. color .. '">' .. args[1] .. '</span>% (<span color="' .. color .. '">' .. args[2] .. '</span>MB/'     .. args[3] .. 'MB) '
     end, 2)
-		            
+
 -- CPU Temperature Widget
 cputempwidget = wibox.widget.textbox()
 vicious.register(cputempwidget, vicious.widgets.thermal,
@@ -316,38 +316,40 @@ vicious.register(lanwidget, vicious.widgets.net,
             r = r .. '<span color="#00ff00">ON</span> '
         else
             r = r .. '<span color="red">OFF</span> '
-        end 
-        
+        end
+
         return r
     end, 1)
 
 -- WIFI Widget
+-- needs wireless_tools to work properly
+-- (if not installed, use fallback version below)
 wifiwidget = wibox.widget.textbox()
---vicious.register(wifiwidget, vicious.widgets.wifi,
---    function (widget, args)
---        r = 'WLAN: '
+vicious.register(wifiwidget, vicious.widgets.wifi,
+    function (widget, args)
+        r = 'WLAN: '
 
---        if args['{ssid}'] == 'N/A' then
---            r = r .. '<span color="red">OFF</span> '
---        else
---              r = r .. '<span color="#00ff00">ON</span> '
---            r = r .. '<span color="#00ff00">' .. args['{ssid}'] .. '</span> '
---        end
-      
---        return r
---    end, 10, 'wlp8s0')
-
-
-vicious.register(wifiwidget, vicious.widgets.net,
-    function(widget, args)
-        r = ' WLAN: '
-        if args["{wlp8s0 carrier}"] == 1 then
-            r = r .. '<span color="#00ff00">ON</span> '
-        else
+        if args['{ssid}'] == 'N/A' then
             r = r .. '<span color="red">OFF</span> '
+        else
+--              r = r .. '<span color="#00ff00">ON</span> '
+            r = r .. '<span color="#00ff00">' .. args['{ssid}'] .. '</span> '
         end
+
         return r
-        end,1)
+    end, 10, 'wlp8s0')
+
+
+--vicious.register(wifiwidget, vicious.widgets.net,
+--    function(widget, args)
+--        r = ' WLAN: '
+--        if args["{wlp8s0 carrier}"] == 1 then
+--            r = r .. '<span color="#00ff00">ON</span> '
+--        else
+--            r = r .. '<span color="red">OFF</span> '
+--        end
+--        return r
+--        end,1)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -531,10 +533,10 @@ globalkeys = awful.util.table.join(
     function()
         wp_timer:emit_signal("timeout")
     end),
-        
+
     -- Screenshots
     awful.key({ }, "Print",
-    function() 
+    function()
         awful.util.spawn_with_shell("scrot -e 'mv $f /home/lena/lemeda/screenshots/'")
     end),
 
@@ -559,7 +561,7 @@ globalkeys = awful.util.table.join(
     -- Function keys
         -- Volume Control
     awful.key({ modkey }, "F7",
-        function() 
+        function()
             awful.util.spawn("amixer -q sset Master 1%-")
             vicious.force({ volwidget, })
         end),
