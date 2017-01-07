@@ -94,12 +94,12 @@ local layouts =
 wp_index = 1
 wp_timeout = 900
 wp_path = "/home/lena/lemeda/Pictures/Wallpapers/"
-wp_files = { "01.png", "02.png", "03.png", "04.png", "05.png", "06.png", "07.jpg", "08.jpg", "09.jpg",
-             "10.jpg", "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", "17.jpg", "18.jpg", "19.jpg",
-             "20.jpg", "21.jpg",
-             "Archlinux.jpg" }
+wp_files = { "02.png", "04.png", "05.png", "08.jpg", "09.jpg", "10.jpg", 
+             "11.jpg", "12.jpg", "13.jpg", "14.jpg", "15.jpg", "16.jpg", 
+             "17.jpg", "18.jpg", "19.jpg", "20.jpg", "21.jpg",
+             "Archlinux.png", "1489408.jpg", "717132-archlinux.png" }
 
-gears.wallpaper.maximized("/home/lena/lemeda/Pictures/Wallpapers/Archlinux.jpg", s, true)
+gears.wallpaper.maximized("/home/lena/lemeda/Pictures/Wallpapers/Archlinux.png", s, true)
 
 -- timer
 wp_timer = timer {timeout = wp_timeout }
