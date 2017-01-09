@@ -45,6 +45,13 @@ key[PageDown]="$terminfo[knp]"
 [[ -n "$key[Right]"     ]] && bindkey -- "$key[Right]"     forward-char
 
 
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
+[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
+
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
@@ -56,13 +63,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     }
     zle -N zle-line-init
     zle -N zle-line-finish
-    autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-    zle -N up-line-or-beginning-search
-    zle -N down-line-or-beginning-search
 fi
 
-[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
-[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
 
 ### Keyboard map
 #setxkbmap fr
