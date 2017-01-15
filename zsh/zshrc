@@ -132,3 +132,4 @@ man() {
 }
 
 export PATH=/usr/share/intellij-idea-ultimate-edition/bin/:$PATH
+export PATH=/home/lena/soft_appliweb/eclipse/:$PATH
