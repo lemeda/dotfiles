@@ -80,12 +80,20 @@ PROMPT="%{$fg_bold[magenta]%}%n%{$reset_color%}@%{$fg_no_bold[blue]%}%m %{$reset
 export EDITOR=vim
 
 ### Aliases
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls="ls -la --color=auto"
+    alias grep="grep --color=auto"
+    alias fgrep="fgrep --color=auto"
+    alias egrep="egrep --color=auto"
+fi
+
 alias netn="sudo netctl start "
 alias netsw="sudo netctl switch-to "
 alias net-reset-mac-eno1="ip link set dev eno1 address 8c:dc:d4:7b:91:f2"
 alias net-spoof-mac-eno1="ip link set dev eno1 address"
 alias backlight="xbacklight -set "
-alias ls="ls -la --color=auto"
 alias :wq="exit"
 alias music2mirage="pax11publish -e -S mirage"
 #alias 2sleep="systemctl suspend & i3lock -u -i lemeda/Pictures/Wallpapers/Archlinux.png"
