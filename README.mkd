@@ -10,5 +10,9 @@ Configuration files
 ## zsh
     zshrc
 
-##Xorg
+##X
     xinitrc
+    xorg/50-synaptics.conf
+
+##Dircolors
+    dircolors
