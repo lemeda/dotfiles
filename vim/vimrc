@@ -35,7 +35,7 @@
         Plugin 'vim-airline/vim-airline'         " Explicit status bar
         Plugin 'vim-airline/vim-airline-themes'  " Themes for vim-airline
         Plugin 'Lokaltog/powerline'              " More stylish statusline
-		Plugin 'bling/vim-bufferline'            " Info on buffers in statusline
+        Plugin 'bling/vim-bufferline'            " Info on buffers in statusline
 
         Plugin 'tpope/vim-fugitive'
 
