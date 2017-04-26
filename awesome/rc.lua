@@ -776,6 +776,8 @@ awful.rules.rules = {
       properties = { screen = 1, tag = "♫" } },
     { rule = { class = "discord" },
       properties = { screen = 1, tag = "8" } },
+    { rule = { class = "Rocket.Chat" },
+      properties = { screen = 1, tag = "8" } },
 }
 -- }}}
 
