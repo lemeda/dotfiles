@@ -583,7 +583,7 @@ globalkeys = awful.util.table.join(
     -- Lock screen and suspend system - Archlinux lockscreen
     awful.key({ modkey, "Shift" }, "l",
         function()
-            awful.util.spawn("systemctl suspend & i3lock -u -i lemeda/Pictures/Wallpapers/Archlinux.png")
+            awful.util.spawn_with_shell("systemctl suspend & i3lock -u -i lemeda/Pictures/Wallpapers/Archlinux.png")
         end),
 
     -- Menubar
