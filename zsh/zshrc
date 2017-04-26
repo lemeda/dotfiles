@@ -104,6 +104,7 @@ alias azer="setxkbmap fr bepo"
 alias steam="LD_PRELOAD='/usr/$LIB/libstdc++.so.6 /usr/$LIB/libgcc_s.so.1 /usr/$LIB/libxcb.so.1 /usr/$LIB/libgpg-error.so' steam"
 alias steam_unbreak_update='find ~/.steam/root/ \( -name "libgcc_s.so*" -o -name "libstdc++.so*" -o -name "libxcb.so*" -o -name "libgpg-error.so*" \) -print -delete'
 alias nvidia-settings="optirun -b none nvidia-settings -c :8"
+alias ocamlg="ledit ocaml -I /home/lena/.opam/packages/ocamlgraph/ graph.cma"
 #alias poezio="source ~/virtualenvs/poezio/bin/activate ; ~/virtualenvs/poezio/bin/poezio"
 #alias skype='xhost +local: && su skype -c skype'
 #alias skype='xhost +si:localuser:skype: && sudo -u skype /usr/bin/skype'
@@ -141,3 +142,6 @@ man() {
 
 export PATH=/usr/share/intellij-idea-ultimate-edition/bin/:$PATH
 export PATH=/home/lena/soft_appliweb/eclipse/:$PATH
+
+# OPAM configuration
+. /home/lena/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
