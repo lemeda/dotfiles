@@ -7,24 +7,21 @@
         set rtp+=~/.vim/bundle/Vundle.vim
         call vundle#begin()
 
-"        Plugin 'gmarik/Vundle.vim'              " Manage plugins
         Plugin 'VundleVim/Vundle.vim'
         Plugin 'tpope/vim-sensible'             " Add multiple features
 "        Plugin 'danro/rename.vim'               " Enable file renaming
 
 "        Plugin 'SirVer/ultisnips'               " Use snippets
         Plugin 'scrooloose/syntastic'           " Compile and print errors on :w
-        Plugin 'Valloric/YouCompleteMe'         " Complete C/C++
+"        Plugin 'Valloric/YouCompleteMe'         " Complete C/C++
         Plugin 'javacomplete'                   " Complete Java
 "        Plugin 'tell-k/vim-autopep8'            " Clean python
 "        Plugin 'tpope/vim-commentary'           " Auto (de)comment
 "        Plugin 'tpope/vim-endwise'              " Auto end
 "        Plugin 'matze/vim-move'                 " Move blocs through code and indentation
 
-"        Plugin 'bling/vim-airline'              " Explicit status bar
 "        Plugin 'airblade/vim-gitgutter'         " Print git diff into vim
 "        Plugin 'Yggdroot/indentLine'            " Explicit indentation
-"        Plugin 'ntpeters/vim-better-whitespace' " Spot and remove bad whitespaces
 "        Plugin 'google/vim-searchindex'         " Print number of results in a search
 
         " Coloration
@@ -49,6 +46,10 @@ filetype plugin indent on
 syntax on
 
 color delek_modified
+
+" 80th column
+set colorcolumn=81
+hi ColorColumn ctermbg=240
 
 set encoding=UTF-8
 set nu
@@ -117,3 +118,8 @@ let g:airline_symbols.whitespace = 'Ξ'
  let g:bufferline_echo = 1
  let g:bufferline_active_buffer_left = '['
  let g:bufferline_active_buffer_right = ']'
+
+ " Egg
+ autocmd BufNewFile,BufRead *.egg set filetype=egg
+ autocmd BufNewFile,BufRead *.tla set filetype=tla
+ autocmd BufNewFile,BufRead *.lus set filetype=lustre
