@@ -123,10 +123,28 @@ mytextclock = wibox.widget.textclock(" %a %b %d, %H:%M ", 20);
 separator = wibox.widget.textbox('|')
 space = wibox.widget.textbox(' ')
 
--- Network widget
-netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net,
-    '<span color="#CC9393">${eno1 down_kb}</span> <span color="#7F9F7F">${eno1 up_kb}</span>'
+-- Network widget - LAN
+netwidgetLan = wibox.widget.textbox()
+vicious.register(netwidgetLan, vicious.widgets.net,
+    function (widget, args)
+        r = ""
+        if args[ '{eno1 carrier}' ] == 1 then
+            r = r .. '<span color="#CC9393">' .. args[ '{eno1 down_kb}' ] ..'↓</span> <span color="#7F9F7F">' .. args[ '{eno1 up_kb}'] .. '↑ </span>'
+        end
+        return r
+    end
+    , 3)
+
+-- Network widget - WLAN
+netwidgetWlan = wibox.widget.textbox()
+vicious.register(netwidgetWlan, vicious.widgets.net,
+    function (widget, args)
+        r = ""
+        if args[ '{wlp8s0 carrier}' ] == 1 then
+            r = r .. '<span color="#CC9393">' .. args[ '{wlp8s0 down_kb}' ] ..'↓</span> <span color="#7F9F7F">' .. args[ '{wlp8s0 up_kb}' ] .. '↑ </span>'
+        end
+        return r
+    end
     , 3)
 
 -- Battery Widget
@@ -174,7 +192,7 @@ vicious.register(batwidget, vicious.widgets.bat,
 	      preset = naughty.config.presets.critical,
 	      title = 'Battery',
 	      text = 'Battery needs to be charged !',
-	      timeout = 5 })
+	      timeout = 15 })
 	    end
 
 	    return r
@@ -435,8 +453,10 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
 			wifiwidget,
+            netwidgetWlan,
 			separator,
 			lanwidget,
+            netwidgetLan,
 			separator,
 			cpuinfowidget,
 			separator,
