@@ -133,7 +133,7 @@ vicious.register(netwidgetLan, vicious.widgets.net,
         end
         return r
     end
-    , 3)
+    , 5)
 
 -- Network widget - WLAN
 netwidgetWlan = wibox.widget.textbox()
