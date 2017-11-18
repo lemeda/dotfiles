@@ -123,7 +123,21 @@ mytextclock = wibox.widget.textclock(" %a %b %d, %H:%M ", 20);
 separator = wibox.widget.textbox('|')
 space = wibox.widget.textbox(' ')
 
--- Network widget - LAN
+---- Network widgets - LAN
+-- LAN Widget
+lanwidget = wibox.widget.textbox()
+vicious.register(lanwidget, vicious.widgets.net,
+    function (widget, args)
+        r = ''
+
+        if args['{eno1 carrier}'] == 1 then
+            r = r .. 'LAN: <span color="#00ff00">ON</span> '
+        end
+
+        return r
+    end, 1)
+
+    -- Network widget - LAN
 netwidgetLan = wibox.widget.textbox()
 vicious.register(netwidgetLan, vicious.widgets.net,
     function (widget, args)
@@ -133,9 +147,27 @@ vicious.register(netwidgetLan, vicious.widgets.net,
         end
         return r
     end
-    , 5)
+    , 11)
 
--- Network widget - WLAN
+
+---- Network widgets - WLAN
+-- WIFI Widget
+-- needs wireless_tools to work properly
+-- (if not installed, use fallback version below)
+wifiwidget = wibox.widget.textbox()
+vicious.register(wifiwidget, vicious.widgets.wifi,
+    function (widget, args)
+        r = ''
+
+        if args['{ssid}'] == 'N/A' then
+            r = r .. 'WLAN: <span color="red">OFF</span> '
+        else
+            r = r .. '<span color="#00ff00">' .. args['{ssid}'] .. '</span> '
+        end
+        return r
+    end, 7, 'wlp8s0')
+
+    -- Network widget - WLAN
 netwidgetWlan = wibox.widget.textbox()
 vicious.register(netwidgetWlan, vicious.widgets.net,
     function (widget, args)
@@ -143,9 +175,13 @@ vicious.register(netwidgetWlan, vicious.widgets.net,
         if args[ '{wlp8s0 carrier}' ] == 1 then
             r = r .. '<span color="#CC9393">' .. args[ '{wlp8s0 down_kb}' ] ..'↓</span> <span color="#7F9F7F">' .. args[ '{wlp8s0 up_kb}' ] .. '↑ </span>'
         end
+        if args[ '{eno1}' ] == 1 then
+            r = r .. " | "
+        end
         return r
     end
-    , 3)
+    , 5)
+
 
 -- Battery Widget
 batwidget = wibox.widget.textbox()
@@ -213,6 +249,7 @@ vicious.register(volwidget, vicious.widgets.volume,
 	  return r
 	end, 10, 'Master')
 
+
 -- Memory Widget
 memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem,
@@ -234,6 +271,7 @@ vicious.register(memwidget, vicious.widgets.mem,
 
         return r .. '<span color="' .. color .. '">' .. args[1] .. '</span>% (<span color="' .. color .. '">' .. args[2] .. '</span>MB/'     .. args[3] .. 'MB) '
     end, 2)
+
 
 -- CPU Temperature Widget
 cputempwidget = wibox.widget.textbox()
@@ -417,10 +455,9 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            --mykeyboardlayout,
 			wifiwidget,
             netwidgetWlan,
-			separator,
 			lanwidget,
             netwidgetLan,
 			separator,
