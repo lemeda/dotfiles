@@ -13,9 +13,9 @@
 
 "        Plugin 'SirVer/ultisnips'               " Use snippets
         Plugin 'scrooloose/syntastic'           " Compile and print errors on :w
-"        Plugin 'Valloric/YouCompleteMe'         " Complete C/C++
+        Plugin 'Valloric/YouCompleteMe'         " Complete C/C++
         Plugin 'javacomplete'                   " Complete Java
-"        Plugin 'tell-k/vim-autopep8'            " Clean python
+        Plugin 'tell-k/vim-autopep8'            " Clean python
 "        Plugin 'tpope/vim-commentary'           " Auto (de)comment
 "        Plugin 'tpope/vim-endwise'              " Auto end
 "        Plugin 'matze/vim-move'                 " Move blocs through code and indentation
