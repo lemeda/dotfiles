@@ -147,7 +147,7 @@ vicious.register(netwidgetLan, vicious.widgets.net,
         end
         return r
     end
-    , 11)
+    , 1)
 
 
 ---- Network widgets - WLAN
@@ -159,13 +159,11 @@ vicious.register(wifiwidget, vicious.widgets.wifi,
     function (widget, args)
         r = ''
 
-        if args['{ssid}'] == 'N/A' then
-            r = r .. 'WLAN: <span color="red">OFF</span> '
-        else
+        if args['{ssid}'] ~= 'N/A' then
             r = r .. '<span color="#00ff00">' .. args['{ssid}'] .. '</span> '
         end
         return r
-    end, 7, 'wlp8s0')
+    end, 1, 'wlp8s0')
 
     -- Network widget - WLAN
 netwidgetWlan = wibox.widget.textbox()
@@ -174,13 +172,13 @@ vicious.register(netwidgetWlan, vicious.widgets.net,
         r = ""
         if args[ '{wlp8s0 carrier}' ] == 1 then
             r = r .. '<span color="#CC9393">' .. args[ '{wlp8s0 down_kb}' ] ..'↓</span> <span color="#7F9F7F">' .. args[ '{wlp8s0 up_kb}' ] .. '↑ </span>'
-        end
-        if args[ '{eno1}' ] == 1 then
-            r = r .. " | "
+            if args[ '{eno1 carrier}' ] == 1 then
+                r = r .. "| "
+            end
         end
         return r
     end
-    , 5)
+    , 1)
 
 
 -- Battery Widget
